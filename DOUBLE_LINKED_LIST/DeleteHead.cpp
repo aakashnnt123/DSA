@@ -32,16 +32,32 @@ Node *Convert2Array(vector<int> &arr)
 
   for (int i = 1; i < arr.size(); i++)
   {
-    Node *temp = new Node(arr[i], nullptr, prev);
+    Node *temp = new Node(arr[i]);
+    temp->back = prev;
     prev->next = temp;
     prev = temp;
   }
   return head;
 }
 
+
+Node* DeleteHead(Node* head)
+{
+   if(head == NULL || head->next == NULL )
+     return NULL;
+
+     Node*prev = head;
+     head = head->next;
+     head->back = nullptr;
+     prev->next = nullptr;
+     delete prev;
+
+     return head;
+}
+
 int print(Node *head)
 {
-  Node *temp = head;
+  Node* temp = head;
 
   while (temp != NULL)
   {
@@ -51,8 +67,9 @@ int print(Node *head)
 }
 int main()
 {
-  vector<int> arr = {12, 5, 7, 8};
-  Node *head = Convert2Array(arr);
-  print(head);
+  vector<int> arr = {10,12, 5, 7, 8,9};
+  Node* head = Convert2Array(arr);
+  Node* head1 = DeleteHead(head);
+  print(head1 );
   return 0;
 }
