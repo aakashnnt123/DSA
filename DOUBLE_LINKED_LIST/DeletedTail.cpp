@@ -56,6 +56,7 @@ Node* DeleteTail(Node* head)
 
   return head;
 }
+
 int print(Node *head)
 {
   Node* temp = head;
@@ -66,6 +67,7 @@ int print(Node *head)
     temp = temp->next;
   }
 }
+
 int main()
 {
   vector<int> arr = {12, 5, 7, 8};
